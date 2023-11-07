@@ -5,30 +5,41 @@ using UnityEngine;
 public class DialogueTrigger : MonoBehaviour
 {
 	public AudioClip clip;
+	public List<AudioClip> clips = new	List<AudioClip>();
 	public float distanceToTrigger = 1f;
 	public bool triggered = false;
-	
+	public bool triggerAlways = false;
+	public float scaleTrigger = 1f;
+	bool canTrigger = true;
     // Start is called before the first frame update
     void Start()
     {
 
     }
-	
-    // Update is called once per frame
-    void Update()
+	private void OnTriggerEnter(Collider other)
 	{
-		if(triggered) return;
-		float distance = Vector3.Distance(this.transform.position, GameJefe.Instance.characterTransform.position);
-		if(distance <= distanceToTrigger) {
+		if(!canTrigger) return;
+		if(scaleTrigger != GameJefe.Instance.levelScale) return;
+		if(triggered && !triggerAlways) return;
+		if (other.CompareTag("Player")) {
+			AudioClip clipToPlay = null;
+			if (!triggered && clip != null)
+			{
+    			clipToPlay = clip;
+			}
+			else
+			{
+    			clipToPlay = clips[Random.Range(0, clips.Count)];
+			}
 			triggered = true;
-			
-			GameJefe.Instance.characterAudioSource.clip = clip;
-			GameJefe.Instance.characterAudioSource.Play();
+			GameJefe.Instance.PlayAudio(clipToPlay);
+			canTrigger = false;
 		}
+			
 	}
-	// Implement OnDrawGizmos if you want to draw gizmos that are also pickable and always drawn.
-	protected void OnDrawGizmos()
+	private void OnTriggerExit(Collider other)
 	{
-		Gizmos.DrawWireSphere(transform.position,distanceToTrigger);
+		if (other.CompareTag("Player"))
+			canTrigger = true;
 	}
 }
