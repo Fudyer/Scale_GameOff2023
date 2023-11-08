@@ -15,7 +15,7 @@ public class TutorialTrigger : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if(scaleTrigger != GameJefe.Instance.levelScale) return;
+		if(scaleTrigger != GameJefe.Instance.levelScale || !GameJefe.Instance.initiated) return;
 		if(triggered && !triggerAlways) return;
 		if (other.CompareTag("Player")) {
 			targetTutorial.SetActive(true);

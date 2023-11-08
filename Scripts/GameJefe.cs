@@ -12,18 +12,28 @@ public class GameJefe : MonoBehaviour
 	public Transform playerPositionMarker;
 	public float levelScale =1f;
 	bool isScaling = false;
-	
+	public AudioClip initialDialogue;
+	public CameraFadePackTransition transition;
+	public bool initiated = false;
     // Start is called before the first frame update
     void Start()
     {
 	    if(Instance == null) {
 	    	Instance = this;
+	    	PlayAudio(initialDialogue);
 	    }        
     }
 
     // Update is called once per frame
     void Update()
-    {
+	{
+		if(!initiated) {
+			if(characterAudioSource.isPlaying) return;
+			initiated = true;
+			transition.fadeIn();
+			SetTimeScale(1f);
+			return;
+		}
 	    if(isScaling) {
 	    	levelTransform.localScale = new	Vector3(levelScale, levelScale, levelScale);
 	    	characterTransform.position = playerPositionMarker.position;
