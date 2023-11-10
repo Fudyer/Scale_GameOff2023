@@ -1054,7 +1054,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Rigidbody Controller Scene
+  m_Text: Quit
 --- !u!1 &1114325045179602721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1771,7 +1771,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4280749780656475017
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2131,7 +2131,7 @@ MonoBehaviour:
   airControl: 0.5
   heightForHardLand: 5
   heightForKillOnLand: 12
-  jumpEffort: {fileID: 8300000, guid: 9ae93c56eab4b274bbd9489b85799b06, type: 3}
+  jumpEffort: {fileID: 8300000, guid: 0ee795a9b13629d48b750ed5ee7b3b14, type: 3}
   hardLandClip: {fileID: 8300000, guid: 8f6a3fcf53f0718418d4341566f98e8d, type: 3}
   OnLanded:
     m_PersistentCalls:
@@ -4118,7 +4118,9 @@ MonoBehaviour:
     <color=#FFFF00>C</color>  - Crouch
 
     <color=#FFFF00>Q</color> 
-    - Crawl'
+    - Crawl
+
+    <color=#FFFF00>E</color>  - Interact'
 --- !u!114 &7462205514816978684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5536,7 +5538,7 @@ GameObject:
   - component: {fileID: 1587768877108594304}
   - component: {fileID: 4722092922957604965}
   m_Layer: 5
-  m_Name: Rigidbody
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5645,28 +5647,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8255359541862636064}
-        m_TargetAssemblyTypeName: DiasGames.Components.PauseComponent, Assembly-CSharp
-        m_MethodName: OnPause
-        m_Mode: 6
+      - m_Target: {fileID: 5612643423923245379}
+        m_TargetAssemblyTypeName: GameJefe, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: TPS Demo Scene - Rigidbody
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1566985233277281627}
-        m_TargetAssemblyTypeName: DiasGames.Controller.LevelController, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: CS Demo Scene - Rigidbody
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &7802594281875824876
@@ -6183,6 +6173,9 @@ GameObject:
   - component: {fileID: 8639870403884747089}
   - component: {fileID: 8639870403884747088}
   - component: {fileID: 8639870403884747095}
+  - component: {fileID: 6120969487378691352}
+  - component: {fileID: 3801406055595306455}
+  - component: {fileID: 1625501145314636771}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6290,6 +6283,189 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6120969487378691352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8639870403884747091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: d8b2da4f72a51d6409d46527043ce177, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
+--- !u!114 &3801406055595306455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8639870403884747091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 8639870403884747094}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 1048576
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
+--- !u!114 &1625501145314636771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8639870403884747091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a02429f78b87440840fd6c54f54cdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  useShaders: 0000
+  selectedShaders: 100000000000000000000000
+  fadeToBackgroundColourType: 0
+  fadeColour: {r: 0, g: 0, b: 0, a: 1}
+  amount_0: 0
+  amplitude_0: 0
+  amplitude1_0: 0
+  amplitude2_0: 0
+  dissolveRadius_0: 0
+  distance_0: 0
+  horizontalAmplitude_0: 0
+  horizontalMovement_0: 0
+  horizontalWavelength_0: 0
+  movement_0: 0
+  skewAmount_0: 0
+  spread_0: 0
+  turns_0: 0
+  verticalAmplitude_0: 0
+  verticalMovement_0: 0
+  verticalWavelength_0: 0
+  wavelength_0: 0
+  wavelength1_0: 0
+  wavelength2_0: 0
+  bounces_0: 0
+  gridSize_0: 0
+  horizontalCells_0: 0
+  numberOfBlinds_0: 0
+  numberOfSections_0: 0
+  numberOfStripes_0: 0
+  rectangles_0: 0
+  squares_0: 0
+  verticalCells_0: 0
+  amount_1: 0
+  amplitude_1: 0
+  amplitude1_1: 0
+  amplitude2_1: 0
+  dissolveRadius_1: 0
+  distance_1: 0
+  horizontalAmplitude_1: 0
+  horizontalMovement_1: 0
+  horizontalWavelength_1: 0
+  movement_1: 0
+  skewAmount_1: 0
+  spread_1: 0
+  turns_1: 0
+  verticalAmplitude_1: 0
+  verticalMovement_1: 0
+  verticalWavelength_1: 0
+  wavelength_1: 0
+  wavelength1_1: 0
+  wavelength2_1: 0
+  bounces_1: 0
+  gridSize_1: 0
+  horizontalCells_1: 0
+  numberOfBlinds_1: 0
+  numberOfSections_1: 0
+  numberOfStripes_1: 0
+  rectangles_1: 0
+  squares_1: 0
+  verticalCells_1: 0
+  amount_2: 0
+  amplitude_2: 0
+  amplitude1_2: 0
+  amplitude2_2: 0
+  dissolveRadius_2: 0
+  distance_2: 0
+  horizontalAmplitude_2: 0
+  horizontalMovement_2: 0
+  horizontalWavelength_2: 0
+  movement_2: 0
+  skewAmount_2: 0
+  spread_2: 0
+  turns_2: 0
+  verticalAmplitude_2: 0
+  verticalMovement_2: 0
+  verticalWavelength_2: 0
+  wavelength_2: 0
+  wavelength1_2: 0
+  wavelength2_2: 0
+  bounces_2: 0
+  gridSize_2: 0
+  horizontalCells_2: 0
+  numberOfBlinds_2: 0
+  numberOfSections_2: 0
+  numberOfStripes_2: 0
+  rectangles_2: 0
+  squares_2: 0
+  verticalCells_2: 0
+  transitionTime: 1
+  initialFade: 1
 --- !u!1 &8639870404086834390
 GameObject:
   m_ObjectHideFlags: 0
@@ -6344,6 +6520,9 @@ MonoBehaviour:
   levelTransform: {fileID: 0}
   playerPositionMarker: {fileID: 0}
   levelScale: 1
+  initialDialogue: {fileID: 8300000, guid: fd88e5af374b0b1419fa245b1c507578, type: 3}
+  transition: {fileID: 1625501145314636771}
+  initiated: 0
 --- !u!1 &8639870404104596537
 GameObject:
   m_ObjectHideFlags: 0

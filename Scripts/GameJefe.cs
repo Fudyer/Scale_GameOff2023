@@ -44,6 +44,11 @@ public class GameJefe : MonoBehaviour
 		characterAudioSource.Play();
 	}
 	[Button]
+	public void QuitGame() {
+		Debug.Log("Quiting Process Started");
+		Application.Quit();
+	}
+	[Button]
 	public void Scale(float scaleSize, float time, Ease ease, AudioClip clip = null) {
 		playerPositionMarker.position = characterTransform.position;
 		isScaling = true;
