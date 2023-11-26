@@ -8,6 +8,7 @@ public class JackInTheBox : MonoBehaviour
 	public Transform door2;
 	public Transform crank;
 	public Transform jack;
+	public Transform pusher;
 	public float jackUpY;
 	public float jackDownY;
 	public Vector3 door1OpenV3;
@@ -27,12 +28,19 @@ public class JackInTheBox : MonoBehaviour
 	public float zenithValue = 40f;
 	public float resetValue = 30f;
 	public float crankPosition;
+	public List<Vector3> pusherPath = new	List<Vector3>();
+	Vector3[] pusherPathArray;
+	public Vector3 pusherRestPos;
 	bool isPopping = false;
 	bool isAtZenith = false;
+	public SplineMover mover;
     // Start is called before the first frame update
     void Start()
     {
-	    
+	    pusherPathArray = pusherPath.ToArray();
+	    for(int i = 0; i < pusherPathArray.Length; i++) {
+	    	//pusherPathArray[i] = pusherPathArray[i] + transform.position;
+	    }
     }
 
 	public static float Clamp0360(float eulerAngles)
@@ -82,13 +90,38 @@ public class JackInTheBox : MonoBehaviour
 	void DoJackPop() {
 		isPopping = true;
 		Sequence sequence = DOTween.Sequence();
-		sequence.Join(door1.DOLocalRotate(door1OpenV3,doorOpenSpeed).SetEase(doorOpenEase));
-		sequence.Join(door2.DOLocalRotate(door2OpenV3,doorOpenSpeed).SetEase(doorOpenEase));
+		if(door1) {
+			sequence.Join(door1.DOLocalRotate(door1OpenV3,doorOpenSpeed).SetEase(doorOpenEase));
+		}
+		if(door2) {
+			sequence.Join(door2.DOLocalRotate(door2OpenV3,doorOpenSpeed).SetEase(doorOpenEase));
+		}
+		if(pusher) {
+			sequence.Join(pusher.DOLocalPath(pusherPathArray,doorOpenSpeed));
+		}
+		if(mover) {
+			mover.DoMove();
+		}
 		sequence.Join(jack.DOLocalMoveY(jackUpY,jackUpSpeed).SetEase(jackUpEase));
 		sequence.AppendInterval(jackUpPause);
-		sequence.Append(door1.DOLocalRotate(door1CloseV3,doorCloseSpeed).SetEase(doorCloseEase));
-		sequence.Join(door2.DOLocalRotate(door2CloseV3,doorCloseSpeed).SetEase(doorCloseEase));
+		if(door1) {
+			sequence.Append(door1.DOLocalRotate(door1CloseV3,doorCloseSpeed).SetEase(doorCloseEase));
+		}
+		if(door2) {
+			sequence.Join(door2.DOLocalRotate(door2CloseV3,doorCloseSpeed).SetEase(doorCloseEase));
+		}
+		if(pusher) {
+			//pusher.position = pusherRestPos;
+		}
 		sequence.Join(jack.DOLocalMoveY(jackDownY,jackDownSpeed).SetEase(jackDownEase));
 		sequence.AppendCallback(()=>{ isPopping = false;});
+	}
+	// Implement this OnDrawGizmosSelected if you want to draw gizmos only if the object is selected.
+	protected void OnDrawGizmosSelected()
+	{
+		Gizmos.color = Color.red;
+		pusherPath.ForEach(pos => {
+			Gizmos.DrawSphere(this.transform.position + pos,.05f);
+		});
 	}
 }

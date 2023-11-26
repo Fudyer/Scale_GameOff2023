@@ -13,11 +13,6 @@ GameObject:
   - component: {fileID: 1567850935223610769}
   - component: {fileID: 1558011468552489744}
   - component: {fileID: 1558011468552489751}
-  - component: {fileID: 2640522486440553841}
-  - component: {fileID: 5014261250045463076}
-  - component: {fileID: 5185748568870114483}
-  - component: {fileID: 7637064188336770075}
-  - component: {fileID: 7275015876183754628}
   m_Layer: 16
   m_Name: ClimbingKnife
   m_TagString: Untagged
@@ -103,8 +98,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.14, y: 0.07574739, z: 0.25}
-  m_Center: {x: 0, y: 0, z: 0.06}
+  m_Size: {x: 0.02, y: 0.05, z: 0.25}
+  m_Center: {x: 0, y: -0.005, z: 0}
 --- !u!114 &1558011468552489751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,7 +107,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555796379527193907}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f3d7765a603b43448458ae0765a0e68, type: 3}
   m_Name: 
@@ -126,121 +121,6 @@ MonoBehaviour:
   arrowColor: {r: 1, g: 0, b: 1, a: 1}
   grabPointRadius: 0.1
   arrowSize: 0.5
---- !u!114 &2640522486440553841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555796379527193907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f7bddc57b504a66b596019f2a8f5a70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SelectionConfigured: 1
-  StaticConfigured: 1
-  IsCollidingWithStaticGeo: 0
-  AverageCollisionNormal: {x: 0, y: 0, z: 0}
-  IsInSelectionMode: 1
-  DistanceToCentroid: {x: 0, y: 0, z: 0}
-  OriginalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  UndoState:
-    Position: {x: 2.134, y: 3.185, z: -17.572}
-    Rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  Data: {fileID: 5014261250045463076}
-  NumberOfFramesWithoutDifference: 0
-  CollisionStayCalls: 0
---- !u!114 &5014261250045463076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555796379527193907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0414c89944f74c5f94e21ba728be4c77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsIgnorableLOD: 0
-  ExistingLayer: 16
-  preExistingJoints: []
-  jointConnectedBodies: []
-  NonGrabbitColliders:
-  - {fileID: 1558011468552489744}
-  NonGrabbitCollidersStaticOnly: []
-  AddedStaticColliders:
-  - {fileID: 7637064188336770075}
-  AddedDynamicColliders:
-  - {fileID: 7275015876183754628}
-  bounds:
-    m_Center: {x: 2.3049464, y: 3.175332, z: -17.572}
-    m_Extent: {x: 0.2989999, y: 0.04754162, z: 0.055000305}
-  Body: {fileID: 5185748568870114483}
-  WasBodyAdded: 1
-  WasBodyRemoved: 0
-  SaveState:
-    UseGravity: 0
-    DetectCollision: 0
-    IsKinematic: 0
-    MaxAngularVelocity: 0
-    MaxDepenetrationVelocity: 0
-    AngularDrag: 0
-    Drag: 0
-    CollisionMode: 0
-    Layer: 0
-    Interpolation: 0
-    Constraints: 0
-  CreatedSubDatas: []
-  SubDatas: []
-  AddedJoints: []
-  isStaticConfigured: 1
-  isDynamicConfigured: 1
---- !u!54 &5185748568870114483
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555796379527193907}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 99999
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 2
---- !u!64 &7637064188336770075
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555796379527193907}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: ee05dcaa722fd2f4f8b4988db6aef1ec, type: 3}
---- !u!64 &7275015876183754628
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555796379527193907}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: ee05dcaa722fd2f4f8b4988db6aef1ec, type: 3}
 --- !u!1 &1799393621857287457
 GameObject:
   m_ObjectHideFlags: 0
@@ -15016,7 +14896,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2468065883497894338}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -0.052}
+  m_LocalPosition: {x: -0, y: 0, z: 0.0615}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

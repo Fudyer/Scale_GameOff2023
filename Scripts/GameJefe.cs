@@ -10,28 +10,46 @@ public class GameJefe : MonoBehaviour
 	public Transform characterTransform;
 	public Transform levelTransform;
 	public Transform playerPositionMarker;
+	public Transform checkpointPositionMarker;
 	public float levelScale =1f;
 	bool isScaling = false;
 	public AudioClip initialDialogue;
 	public CameraFadePackTransition transition;
 	public bool initiated = false;
+	public TextRevealer revealer;
+	public TMPro.TextMeshProUGUI revealerText;
+	public bool skipRequested = false;
+	public bool skipNotified = false;
+	int keyFound = 0;
+	public List<AudioClip> keyfoundClips;
+	public int numbKeys = 0;
+	public AudioClip endGameClip;
+	public CameraFadePackTransition endTransition;
     // Start is called before the first frame update
     void Start()
     {
 	    if(Instance == null) {
 	    	Instance = this;
+	    	//SetTimeScale(0f);
 	    	PlayAudio(initialDialogue);
+	    	playerPositionMarker.position = characterTransform.position;
 	    }        
     }
-
+	[Button]
+	public void EndGame() {
+		PlayAudio(endGameClip);
+		endTransition.enabled = true;
+		endTransition.fadeOut();
+	}
     // Update is called once per frame
     void Update()
 	{
 		if(!initiated) {
-			if(characterAudioSource.isPlaying) return;
+			characterTransform.position = playerPositionMarker.position;
+			if(characterAudioSource.isPlaying && !skipRequested) return;
 			initiated = true;
 			transition.fadeIn();
-			SetTimeScale(1f);
+			//SetTimeScale(1f);
 			return;
 		}
 	    if(isScaling) {
@@ -42,6 +60,10 @@ public class GameJefe : MonoBehaviour
 	public void PlayAudio(AudioClip clip) {
 		characterAudioSource.clip = clip;
 		characterAudioSource.Play();
+	}
+	public void SeeKey() {
+		PlayAudio(keyfoundClips[keyFound]);
+		keyFound++;
 	}
 	[Button]
 	public void QuitGame() {
