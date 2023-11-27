@@ -25,6 +25,9 @@ public class GameJefe : MonoBehaviour
 	public int numbKeys = 0;
 	public AudioClip endGameClip;
 	public CameraFadePackTransition endTransition;
+	public AudioSource endAudioSource;
+	public TextRevealer endRevealer;
+	public Transform healthBar;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,8 +41,19 @@ public class GameJefe : MonoBehaviour
 	[Button]
 	public void EndGame() {
 		PlayAudio(endGameClip);
+		transition.enabled = false;
 		endTransition.enabled = true;
+		healthBar.gameObject.active = false;
 		endTransition.fadeOut();
+		Sequence sequence = DOTween.Sequence();
+		sequence.AppendInterval(1f);
+		sequence.AppendCallback(()=> {
+			endAudioSource.Play();	
+		});
+		sequence.Join(DOTween.To(()=>endAudioSource.volume, x => endAudioSource.volume = x,1f,8f));
+		sequence.AppendCallback(() => {
+			endRevealer.Reveal();
+		});
 	}
     // Update is called once per frame
     void Update()

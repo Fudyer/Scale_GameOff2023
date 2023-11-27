@@ -21,9 +21,9 @@ public class Key : MonoBehaviour
 	}
 	private void OnTriggerEnter(Collider other)
 	{
-		if(!canTrigger) return;
-		if(scaleTrigger != GameJefe.Instance.levelScale) return;
-		if(triggered && !triggerAlways) return;
+		//if(!canTrigger) return;
+		//if(scaleTrigger != GameJefe.Instance.levelScale) return;
+		//if(triggered && !triggerAlways) return;
 		if (other.CompareTag("Player")) {
 			if(!seen) {
 				seen = true;
