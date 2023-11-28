@@ -52,7 +52,7 @@ public class CheckpointManager : MonoBehaviour
 	{
 		_playerController.OnDead -= DoCheckPoint;
 	}
-	private void DoCheckPoint() {
+	public void DoCheckPoint() {
 		Sequence sequence = DOTween.Sequence();
 		sequence.AppendInterval(deathDelay);
 		sequence.AppendCallback(() => {

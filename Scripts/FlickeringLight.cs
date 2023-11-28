@@ -30,6 +30,8 @@ public class FlickeringLight : MonoBehaviour
 
 	private void Update()
 	{
+		currentIntensity = baseIntensity;
+		return;
 		if (Time.time >= nextFlickerTime & isFlickering)
 		{
 			
